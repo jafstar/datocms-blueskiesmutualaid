@@ -55,7 +55,7 @@ export default function Footer({ links }) {
         <Row className="mt-5">
           <Col md={12}>
             <div className="text-center text-muted">
-              <p className="mb-0 f-15">{`©${new Date().getFullYear()} - Your Company Name`}</p>
+              <p className="mb-0 f-15">{`©${new Date().getFullYear()} - Blue Skies Mutual Aid, Inc is a 501(c)3 nonprofit`}</p>
             </div>
           </Col>
         </Row>

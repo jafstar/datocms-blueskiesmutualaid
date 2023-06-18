@@ -1,12 +1,22 @@
 import React from "react"
 import { Container, Navbar, Nav } from "react-bootstrap"
+import Image from 'next/image'
 
 export default function Header() {
   return (
     <div className={"header"}>
       <Navbar bf={"light"} expand="md">
         <Container>
-          <Navbar.Brand href="/">Your Logo</Navbar.Brand>
+          <Navbar.Brand href="/" className='header-logo-link'>
+            <Image
+              className='header-logo-img'
+              src="/images/blueskies-logo.png"
+              width={249}
+              height={240}
+              alt="Blue Skies Mutal Aid"
+            />
+          </Navbar.Brand>
+
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav className="m-auto">

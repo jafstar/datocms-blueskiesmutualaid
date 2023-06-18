@@ -7,7 +7,7 @@ export default function Hero({ record: { heroTitle, heroSubtitle, heroImage } })
   return (
     <section className="position-relative bg-light hero">
       <Container>
-        <Row className="align-items-center">
+        <Row className="align-items-center flex-row-reverse">
           <Col lg={6}>
             <div className="pr-lg-5">
               <h1 className="mb-4 font-weight-normal line-height-1_4">{heroTitle}</h1>
@@ -21,7 +21,12 @@ export default function Hero({ record: { heroTitle, heroSubtitle, heroImage } })
           </Col>
           <Col lg={6}>
             <div className="mt-5 mt-lg-0">
-              <Image data={heroImage.responsiveImage} className="img-fluid d-block mx-auto" alt={heroImage.alt} />
+              {
+                heroImage && heroImage.responsiveImage && (
+                  <Image data={heroImage && heroImage.responsiveImage} className="img-fluid d-block mx-auto" alt={heroImage?.alt} />
+
+                )
+              }
             </div>
           </Col>
         </Row>

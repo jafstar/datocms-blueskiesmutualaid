@@ -1,5 +1,16 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Read the full tutorial on how to build a [landing page builder](https://www.datocms.com/blog/landing-page-builder), or get started right away with DatoCMS [landing page template](https://www.datocms.com/marketplace/starters/landing-page-template).
 
+##
+
+[Staging site](cosmic-sunburst-3f8487.netlify.app)
+[Git repo](https://github.com/jafstar/datocms-blueskiesmutualaid)
+
+## Dato
+
+[Dato admin](https://blueskiesmutualaid.admin.datocms.com)
+
+[Fetch Records](https://www.datocms.com/docs/content-delivery-api/how-to-fetch-records)
+
 ## Getting Started
 
 First, run the development server:
