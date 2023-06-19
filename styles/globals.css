@@ -151,4 +151,5 @@ img.header-logo-img {
   position: absolute;
   bottom: 120px;
   z-index: 0;
+  background-position: center;
 }
