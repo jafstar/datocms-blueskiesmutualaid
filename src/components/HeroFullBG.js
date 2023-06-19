@@ -8,13 +8,16 @@ export default function HeroFullBG({ record: { heroTitle, heroSubtitle, heroImag
     <section className="hero-full-bg-shell">
 
       <div className="hero-full-bg-text">
-        <h1 className="">{heroTitle}</h1>
-        <p className="">{heroSubtitle}</p>
-        <Link href="#services">
-          <a className="btn btn-warning">
-            Find Out More <span className="ml-2">&darr;</span>
-          </a>
-        </Link>
+
+        <div>
+          <h1 className="">{heroTitle}</h1>
+          <p className="">{heroSubtitle}</p>
+          <Link href="#services">
+            <a className="btn btn-warning">
+              Find Out More <span className="ml-2">&darr;</span>
+            </a>
+          </Link>
+        </div>
       </div>
 
 
@@ -28,6 +31,7 @@ export default function HeroFullBG({ record: { heroTitle, heroSubtitle, heroImag
             />
           )
         }
+        <div className="hero-full-bg-hills"></div>
         <div className="hero-full-bg-pattern"></div>
       </div>
     </section>
