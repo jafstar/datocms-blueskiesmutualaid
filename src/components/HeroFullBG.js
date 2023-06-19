@@ -28,6 +28,7 @@ export default function HeroFullBG({ record: { heroTitle, heroSubtitle, heroImag
             />
           )
         }
+        <div className="hero-full-bg-pattern"></div>
       </div>
     </section>
   )
