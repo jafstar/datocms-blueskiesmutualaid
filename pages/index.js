@@ -9,6 +9,8 @@ import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments"
 import About from "../src/components/About"
 
 import Hero from "../src/components/Hero"
+import HeroFullBG from "../src/components/HeroFullBG"
+
 import Service from "../src/components/Service"
 
 
@@ -117,7 +119,7 @@ export default function LandingPage({ subscription }) {
 
   return (
     <Layout pageTitle="Landing Page Template in Next.js">
-      <Hero record={landings[0]} />
+      <HeroFullBG record={landings[0]} />
       <StructuredText
         data={landings[0].content}
         renderBlock={({ record }) => {
