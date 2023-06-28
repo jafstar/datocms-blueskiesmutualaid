@@ -3,8 +3,8 @@ import { Container, Row, Col } from "react-bootstrap"
 
 export default function Footer({ links }) {
   return (
-    <section className="footer section">
-      <Container>
+    <section className="footer section bg-grey-norm">
+      <Container className="">
         <Row>
           <Col lg={4}>
             <div className="mb-4">
@@ -51,15 +51,14 @@ export default function Footer({ links }) {
             </Row>
           </Col>
         </Row>
-
-        <Row className="mt-5">
-          <Col md={12}>
-            <div className="text-center text-muted">
-              <p className="mb-0 f-15">{`©${new Date().getFullYear()} - Blue Skies Mutual Aid, Inc is a 501(c)3 nonprofit`}</p>
-            </div>
-          </Col>
-        </Row>
       </Container>
+      <Row className="mt-5 bg-grey-dark pad-10">
+        <Col md={12}>
+          <div className="text-center text-muted">
+            <p className="mb-0 f-15 text-white">{`©${new Date().getFullYear()} - Blue Skies Mutual Aid, Inc is a 501(c)3 nonprofit`}</p>
+          </div>
+        </Col>
+      </Row>
     </section>
   )
 }

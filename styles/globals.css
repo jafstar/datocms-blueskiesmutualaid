@@ -153,3 +153,67 @@ img.header-logo-img {
   z-index: 0;
   background-position: center;
 }
+
+.grid {
+  display: grid;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+#homepage-banner {
+  position: absolute;
+  top: -20px;
+  z-index: 1000;
+  background: #CBE6F0;
+  padding: 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  word-spacing: 53px;
+}
+
+.h2-light {
+  font-style: light;
+  font-weight: 100;
+  font-size: 36px;
+  color: #405964;
+}
+
+.bg-grey-light {
+  background: #F8F8F8;
+}
+
+.bg-grey-norm {
+  background: #D9D9D9;
+}
+
+.bg-grey-dark {
+  background: #464646;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.pad-10 {
+  padding: 10px;
+}
+
+.pad-20 {
+  padding: 20px;
+}
+
+.pad-50 {
+  padding: 50px;
+}
+
+.text-white {
+  color: #fff;
+}

@@ -12,6 +12,7 @@ import Hero from "../src/components/Hero"
 import HeroFullBG from "../src/components/HeroFullBG"
 
 import Service from "../src/components/Service"
+import ServiceGrid from "../src/components/ServiceGrid"
 
 
 const slugify = (str) =>
@@ -52,13 +53,24 @@ export async function getStaticProps({ params, preview = false }) {
               __typename
               ... on SectionRecord {
                 id
-                title
-                text
                 content {
                   ...on AboutBlockRecord {
                     __typename
                     title
                     text
+                    image {
+                      responsiveImage(imgixParams: {fm: jpg, fit: crop}) {
+                        ...responsiveImageFragment
+                      }
+                    }
+                  }
+                  ...on BannerRecord {
+                    __typename
+                    title
+                  }
+                  ...on StatementRecord {
+                    __typename
+                    message
                   }
                   ...on TitleBlockRecord {
                     id
@@ -75,7 +87,7 @@ export async function getStaticProps({ params, preview = false }) {
                         title
                         ctaLink
                         text
-                        image {
+                        icon {
                           responsiveImage(imgixParams: {fm: jpg, fit: crop}) {
                             ...responsiveImageFragment
                           }
@@ -118,39 +130,67 @@ export default function LandingPage({ subscription }) {
   console.log("landings: ", landings)
 
   return (
-    <Layout pageTitle="Landing Page Template in Next.js">
+    <Layout pageTitle="Blue Skies Mutual Aid - Gaines County, TX">
       <HeroFullBG record={landings[0]} />
+
+
       <StructuredText
         data={landings[0].content}
         renderBlock={({ record }) => {
+
           switch (record.__typename) {
             case "SectionRecord":
               const blocks = record.content.map((rec) => {
                 switch (rec.__typename) {
+                  // case "StatementRecord":
+                  //  return (
+                  //  <div className="statement-block row">
+                  //   <div className="col-md-10 mx-auto">
+                  //   <p className="line-height-1_8">
+                  //    {rec.message}
+                  //   </p>
+                  //   </div>
+                  //  </div>
+                  // )
+                  case "BannerRecord":
+                    return (
+                      <div id="homepage-banner" className="col-md-10 text-center">
+                        <div className="h2-light">{rec.title}</div>
+                      </div>
+                    )
                   case "AboutBlockRecord":
                     return <About record={rec} />
                   case "TitleBlockRecord":
                     return (
-                      <Col md={4} key={rec.id}>
-                        <h3 className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</h3>
+                      <Col md={10} key={rec.id}>
+                        <p className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</p>
                       </Col>
                     )
                   case "LinksToModelRecord":
-                    return rec.links.map((link) => {
-                      if (link.__typename === "ServiceRecord") {
-                        return <Service service={link} />
+                    return <div className="row">
+                      {rec.links.map((link) => {
+                        if (link.__typename === "ServiceRecord") {
+                          return (
+                            <div className="col-md-4 col-sm-6 col-xs-6">
+                              <ServiceGrid service={link} />
+                            </div>
+
+                          )
+                        }
+                      })
                       }
-                    })
+                    </div>
+
                 }
               })
 
               return (
-                <section className="section">
+                <section className="section bg-grey-light">
                   <Container>
-                    <h2 className="text-lg text-dark text-center mb-4" key={record.id} id={slugify(record.title)}>
+                    {/* <h2 className="text-lg text-dark text-center mb-4" key={record.id} id={slugify(record.title)}>
                       {record.title}
                     </h2>
-                    <p className="text-muted text-center mb-5">{record.text}</p>
+                    <p className="text-muted text-center mb-5">{record.text}</p> */}
                     {blocks.length > 0 && (
                       <Row className="justify-content-center" key={record.id + "-block"}>
                         {blocks}
@@ -181,7 +221,18 @@ export default function LandingPage({ subscription }) {
           }),
         ]}
       />
-      <section className="section" id="services">
+
+
+
+      <div className="bg-white pad-50 row">
+        <div className="col-md-10 mx-auto">
+          <p className="line-height-1_8">
+            {landings[0]?.content?.blocks[1].content[1]?.message}
+          </p>
+        </div>
+      </div>
+
+      {/* <section className="section" id="services">
         <Container>
           <Row className="justify-content-center">
             <Col lg={6} md={8}>
@@ -203,7 +254,7 @@ export default function LandingPage({ subscription }) {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
     </Layout>
   )
 }
