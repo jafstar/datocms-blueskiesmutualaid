@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Container, Row, Col } from "react-bootstrap"
 import { StructuredText, useQuerySubscription, renderMetaTags, renderNodeRule } from "react-datocms"
 import { isHeading } from "datocms-structured-text-utils"
-
+import { snakeCase } from "change-case"
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments"
 import About from "../src/components/About"
 
@@ -155,7 +155,12 @@ export default function LandingPage({ subscription }) {
                   case "BannerRecord":
                     return (
                       <div id="homepage-banner" className="col-md-10 text-center">
+                        <div className="banner-triangle triangle-left-top"></div>
+                        <div className="banner-triangle triangle-left-bottom"></div>
                         <div className="h2-light">{rec.title}</div>
+                        <div className="banner-triangle triangle-right-top"></div>
+                        <div className="banner-triangle triangle-right-bottom"></div>
+
                       </div>
                     )
                   case "AboutBlockRecord":
@@ -169,9 +174,10 @@ export default function LandingPage({ subscription }) {
                   case "LinksToModelRecord":
                     return <div className="row">
                       {rec.links.map((link) => {
+
                         if (link.__typename === "ServiceRecord") {
                           return (
-                            <div className="col-md-4 col-sm-6 col-xs-6">
+                            <div id={`grid-item-${snakeCase(link.title)}`} className="col-md-4 col-sm-6 col-xs-6">
                               <ServiceGrid service={link} />
                             </div>
 

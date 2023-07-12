@@ -170,13 +170,87 @@ img.header-logo-img {
 
 #homepage-banner {
   position: absolute;
-  top: -20px;
+  top: -50px;
   z-index: 1000;
   background: #CBE6F0;
   padding: 20px 0;
   text-transform: uppercase;
   letter-spacing: 2px;
-  word-spacing: 53px;
+  word-spacing: 15px;
+}
+
+#homepage-banner .banner-triangle.triangle-left-top {
+  position: absolute;
+  display: block;
+  left: -30px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-top: 0;
+  border-bottom: 45px solid #CBE6F0;
+  transform: rotate(180deg);
+}
+
+#homepage-banner .banner-triangle.triangle-left-bottom {
+  position: absolute;
+  display: block;
+  left: -30px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-top: 0;
+  border-bottom: 45px solid #CBE6F0;
+  transform: rotate(0deg);
+}
+
+#homepage-banner .banner-triangle.triangle-right-top {
+  position: absolute;
+  display: block;
+  right: -30px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-top: 0;
+  border-bottom: 45px solid #CBE6F0;
+  transform: rotate(180deg);
+}
+
+#homepage-banner .banner-triangle.triangle-right-bottom {
+  position: absolute;
+  display: block;
+  right: -30px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-top: 0;
+  border-bottom: 45px solid #CBE6F0;
+  transform: rotate(0deg);
+}
+
+#grid-item-housing,
+#grid-item-employment {
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+
+}
+
+#grid-item-non_perishable_food {
+  border-bottom: 1px solid #ccc;
+}
+
+#grid-item-furniture_home_goods,
+#grid-item-toys_games {
+  border-right: 1px solid #ccc;
+  padding-top: 40px;
+}
+
+#grid-item-gently_used_clothing {
+  padding-top: 40px;
+
 }
 
 .h2-light {
