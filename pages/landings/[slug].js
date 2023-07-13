@@ -10,18 +10,22 @@ import { request } from "../../lib/datocms"
 import { StructuredText, useQuerySubscription, renderMetaTags, renderNodeRule } from "react-datocms"
 import { Row, Container, Col } from "react-bootstrap"
 
-const slugify = (str) =>
-  str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "")
+// const slugify = (str) => {
+
+
+//   str
+//     .toLowerCase()
+//     .trim()
+//     .replace(/[^\w\s-]/g, "")
+//     .replace(/[\s_-]+/g, "-")
+//     .replace(/^-+|-+$/g, "")
+// }
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allLandingPages { slug } }` })
-
+  console.log('data: ', data)
   return {
+
     paths: data.allLandingPages.map((landing) => `/landings/${landing.slug}`),
     fallback: false,
   }
@@ -54,8 +58,6 @@ export async function getStaticProps({ params, preview = false }) {
               __typename
               ... on SectionRecord {
                 id
-                title
-                text
                 content {
                   ...on AboutBlockRecord {
                     __typename
@@ -104,14 +106,14 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       subscription: preview
         ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.DATOCMS_API_READONLY_TOKEN,
-          }
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.DATOCMS_API_READONLY_TOKEN,
+        }
         : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
       preview,
     },
   }
@@ -155,9 +157,9 @@ export default function LandingPage({ subscription }) {
               return (
                 <section className="section">
                   <Container>
-                    <h2 className="text-lg text-dark text-center mb-4" key={record.id} id={slugify(record.title)}>
+                    {/* <h2 className="text-lg text-dark text-center mb-4" key={record.id} id={slugify(record.title)}>
                       {record.title}
-                    </h2>
+                    </h2> */}
                     <p className="text-muted text-center mb-5">{record.text}</p>
                     {blocks.length > 0 && (
                       <Row className="justify-content-center" key={record.id + "-block"}>
@@ -173,19 +175,28 @@ export default function LandingPage({ subscription }) {
         }}
         customNodeRules={[
           renderNodeRule(isHeading, ({ node, children, key }) => {
-            const HeadingTag = `h${node.level}`
-            const anchor = toPlainText(node)
-              .toLowerCase()
-              .replace(/ /g, "-")
-              .replace(/[^\w-]+/g, "")
+            if (node) {
+              const HeadingTag = `h${node.level}`
+              const anchor = toPlainText(node)
+                .toLowerCase()
+                .replace(/ /g, "-")
+                .replace(/[^\w-]+/g, "")
 
-            console.log("foo", anchor)
+              console.log("foo", anchor)
 
-            return (
-              <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">
-                <a href={`#${anchor}`}>{children}</a>
-              </HeadingTag>
-            )
+              return (
+                <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">
+                  <a href={`#${anchor}`}>{children}</a>
+                </HeadingTag>
+              )
+            } else {
+              return (
+                <div>
+                  Sorry, there is an issue with the page.
+                </div>
+              )
+            }
+
           }),
         ]}
       />
