@@ -12,7 +12,7 @@ export default function HeroFullBG({ record: { heroTitle, heroSubtitle, heroImag
         <div>
           <h1 className="">{heroTitle}</h1>
           <p className="">{heroSubtitle}</p>
-          <div class="flex-row">
+          <div className="flex-row">
           <Link href="#services">
             <a className="btn btn-primary btn-lg">
               Take Action
