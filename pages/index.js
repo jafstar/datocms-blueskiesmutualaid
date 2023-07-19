@@ -157,7 +157,7 @@ export default function LandingPage({ subscription }) {
                       <div id="homepage-banner" className="col-md-10 text-center">
                         <div className="banner-triangle triangle-left-top"></div>
                         <div className="banner-triangle triangle-left-bottom"></div>
-                        <div className="h2-light">{rec.title}</div>
+                        <div className="banner-title">{rec.title}</div>
                         <div className="banner-triangle triangle-right-top"></div>
                         <div className="banner-triangle triangle-right-bottom"></div>
 
