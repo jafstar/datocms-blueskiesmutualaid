@@ -157,13 +157,13 @@ img.header-logo-img {
 
 .hero-full-bg-pattern {
   height: 500px;
-  width: 100%;
+  width: 600px;
   background: transparent url(/images/texas-gaines-county.png) no-repeat;
   background-size: contain;
-  background-position: top center;
+  background-position: top;
   position: absolute;
   bottom: -20px;
-  left: 400px;
+  right: 260px;
   z-index: -1;
 }
 
