@@ -1,64 +1,79 @@
 import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
+import Image from "next/image"
 
 export default function Footer({ links }) {
   return (
     <section className="footer section bg-grey-norm">
-      <Container className="">
-        <Row>
-          <Col lg={4}>
-            <div className="mb-4">
-              <p className="text-muted mt-4 mb-2">your-email@email.com</p>
-              <h6 className="text-muted font-weight-normal">+1 555-2368</h6>
-            </div>
-          </Col>
-          <Col lg={8}>
-            <Row>
-              {links.map((link, key) => (
-                <Col key={key} md={4}>
-                  <h6 className="text-dark mb-3">{link.title}</h6>
-                  <ul className="list-unstyled company-sub-menu">
-                    {link.child.map((fLink, key) => (
-                      <li key={key}>
-                        <a href={fLink.link}>{fLink.title}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </Col>
-              ))}
+      <div></div>
+      <div id="social-links-shell">
+        <div id="social-links" className="flex-row">
+          <a href="#">
+            <Image src="/images/social-fb.png" width={100} height={100} alt="Facebook" />
+          </a>
 
-              <Col md={4}>
-                <h6 className="text-dark mb-3">Our Address</h6>
-                <p className="text-muted f-14">1234 Lorem Ipsum, 12345</p>
-                <ul className="list-unstyled footer-social-list mt-4">
-                  <li className="list-inline-item">
-                    <a href="src/app/components/Footer#">
-                      <i className="mdi mdi-facebook"></i>
-                    </a>
-                  </li>
-                  <li className="list-inline-item">
-                    <a href="src/app/components/Footer#">
-                      <i className="mdi mdi-instagram"></i>
-                    </a>
-                  </li>
-                  <li className="list-inline-item">
-                    <a href="src/app/components/Footer#">
-                      <i className="mdi mdi-linkedin"></i>
-                    </a>
-                  </li>
-                </ul>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-      <Row className="mt-5 bg-grey-dark pad-10">
-        <Col md={12}>
-          <div className="text-center text-muted">
+          <a href="#">
+            <Image src="/images/social-insta.png" width={100} height={100} alt="Instagram" />
+          </a>
+
+          <a href="#">
+            <Image src="/images/social-linkedin.png" width={100} height={100} alt="LinkedIn" />
+          </a>
+
+          <a href="#">
+            <Image src="/images/social-youtube.png" width={100} height={100} alt="YouTube" />
+          </a>
+        </div>
+        <div id="social-text">Connect with us online</div>
+        <div className="social-bg bg-1"></div>
+        <div className="social-bg bg-2"></div>
+      </div>
+      <div id="footer-nav-shell">
+        <Container className="footer-nav">
+          <Row>
+            <Col lg={12}>
+              <Row>
+                {links.map((link, key) => (
+                  <Col key={key} md={3}>
+                    {/* <h6 className="text-dark mb-3">{link.title}</h6> */}
+                    <ul className="list-unstyled company-sub-menu">
+                      {link.child.map((fLink, key) => (
+                        <li key={key}>
+                          <a href={fLink.link}>{fLink.title}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      <div id="footer-extra-shell">
+        <div id="footer-extra" className="flex-row space-between">
+          <div className="text-left">
+            <Image src="/images/accepted-payments.png" width={400} height={65} alt="Accepted forms of payment" />
+          </div>
+          <div id="payment-message">
+            Please donate whatever you can through <a href="#">PayPal</a> or <a href="#">Stripe</a> (including Google
+            Pay, Apple Pay, or direct debit).
+          </div>
+        </div>
+      </div>
+      <div id="footer-info-shell" className="bg-grey-dark ">
+        <div id="footer-info" className="flex-row space-between">
+          <div className="text-left text-muted">
             <p className="mb-0 f-15 text-white">{`©${new Date().getFullYear()} - Blue Skies Mutual Aid, Inc is a 501(c)3 nonprofit`}</p>
           </div>
-        </Col>
-      </Row>
+          <div className="text-right text-muted">
+            <p className="mb-0 f-15 text-white">
+              <a href="mailto:info@blueskiesma.com">info@blueskiesma.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

@@ -1,37 +1,92 @@
 [
   {
     "id": 1,
-    "title": "Services",
+    "title": "Col 1",
     "child": [
       {
-        "title": "Lorem Ipsum 1",
+        "title": "Home",
         "link": "/"
       },
       {
-        "title": "Lorem Ipsum 2",
-        "link": "/"
+        "title": "Take Action",
+        "link": "/take-action"
       },
       {
-        "title": "Lorem Ipsum 3",
-        "link": "/"
+        "title": "Ask for Help",
+        "link": "/ask-for-help"
+      },
+      {
+        "title": "Contact Us",
+        "link": "/contact-us"
       }
     ]
   },
   {
     "id": 2,
-    "title": "About Us",
+    "title": "Col 2",
     "child": [
-      {
-        "title": "Contact Us",
-        "link": "/"
-      },
       {
         "title": "FAQs",
         "link": "/"
       },
       {
-        "title": "Privacy Policy",
+        "title": "Our Volunteer Handbook",
         "link": "/"
+      },
+
+      {
+        "title": "Our Allies",
+        "link": "/"
+      },
+      {
+        "title": "Our Climate Impact",
+        "link": "/"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Col 3",
+    "child": [
+      {
+        "title": "Upcoming Events",
+        "link": "/upcoming-events"
+      },
+      {
+        "title": "Volunteer Opportunities",
+        "link": "/volunteer opportunities"
+      },
+
+      {
+        "title": "Donation Opportunities",
+        "link": "/donation-opportunities"
+      },
+      {
+        "title": "Financials and Reports",
+        "link": "/financials-and-reports"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Col 4",
+    "child": [
+      {
+        "title": "About Us",
+        "link": "/about-us"
+      },
+      {
+        "title": "Our Story",
+        "link": "/our-story"
+      },
+
+      {
+        "title": "Meeting the Team",
+        "link": "/meeting-the-team"
+      },
+      {
+        "title": "Photo Gallery",
+        "link": "/photo-gallery"
       }
     ]
   }
