@@ -4,30 +4,9 @@ import Image from "next/image"
 
 export default function Footer({ links }) {
   return (
-    <section className="footer section bg-grey-norm">
+    <section className="footer">
       <div></div>
-      <div id="social-links-shell">
-        <div id="social-links" className="flex-row">
-          <a href="#">
-            <Image src="/images/social-fb.png" width={100} height={100} alt="Facebook" />
-          </a>
 
-          <a href="#">
-            <Image src="/images/social-insta.png" width={100} height={100} alt="Instagram" />
-          </a>
-
-          <a href="#">
-            <Image src="/images/social-linkedin.png" width={100} height={100} alt="LinkedIn" />
-          </a>
-
-          <a href="#">
-            <Image src="/images/social-youtube.png" width={100} height={100} alt="YouTube" />
-          </a>
-        </div>
-        <div id="social-text">Connect with us online</div>
-        <div className="social-bg bg-1"></div>
-        <div className="social-bg bg-2"></div>
-      </div>
       <div id="footer-nav-shell">
         <Container className="footer-nav">
           <Row>

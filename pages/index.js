@@ -1,6 +1,7 @@
 import Layout from "../src/components/Layout"
 import { request } from "../lib/datocms"
 import Link from "next/link"
+import Image from "next/image"
 import { Container, Row, Col } from "react-bootstrap"
 import { StructuredText, useQuerySubscription, renderMetaTags, renderNodeRule } from "react-datocms"
 import { isHeading } from "datocms-structured-text-utils"
@@ -13,7 +14,6 @@ import HeroFullBG from "../src/components/HeroFullBG"
 
 import Service from "../src/components/Service"
 import ServiceGrid from "../src/components/ServiceGrid"
-
 
 const slugify = (str) =>
   str
@@ -109,15 +109,15 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       subscription: preview
         ? {
-          ...graphqlRequest,
-          initialData: await request(graphqlRequest),
-          token: process.env.DATOCMS_API_READONLY_TOKEN,
-          environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
-        }
+            ...graphqlRequest,
+            initialData: await request(graphqlRequest),
+            token: process.env.DATOCMS_API_READONLY_TOKEN,
+            environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
+          }
         : {
-          enabled: false,
-          initialData: await request(graphqlRequest),
-        },
+            enabled: false,
+            initialData: await request(graphqlRequest),
+          },
     },
   }
 }
@@ -133,11 +133,9 @@ export default function LandingPage({ subscription }) {
     <Layout pageTitle="Blue Skies Mutual Aid - Gaines County, TX">
       <HeroFullBG record={landings[0]} />
 
-
       <StructuredText
         data={landings[0].content}
         renderBlock={({ record }) => {
-
           switch (record.__typename) {
             case "SectionRecord":
               const blocks = record.content.map((rec) => {
@@ -160,7 +158,6 @@ export default function LandingPage({ subscription }) {
                         <div className="banner-title">{rec.title}</div>
                         <div className="banner-triangle triangle-right-top"></div>
                         <div className="banner-triangle triangle-right-bottom"></div>
-
                       </div>
                     )
                   case "AboutBlockRecord":
@@ -172,21 +169,19 @@ export default function LandingPage({ subscription }) {
                       </Col>
                     )
                   case "LinksToModelRecord":
-                    return <div className="row">
-                      {rec.links.map((link) => {
-
-                        if (link.__typename === "ServiceRecord") {
-                          return (
-                            <div id={`grid-item-${snakeCase(link.title)}`} className="col-md-4 col-sm-6 col-xs-6">
-                              <ServiceGrid service={link} />
-                            </div>
-
-                          )
-                        }
-                      })
-                      }
-                    </div>
-
+                    return (
+                      <div className="row">
+                        {rec.links.map((link) => {
+                          if (link.__typename === "ServiceRecord") {
+                            return (
+                              <div id={`grid-item-${snakeCase(link.title)}`} className="col-md-4 col-sm-6 col-xs-6">
+                                <ServiceGrid service={link} />
+                              </div>
+                            )
+                          }
+                        })}
+                      </div>
+                    )
                 }
               })
 
@@ -217,7 +212,6 @@ export default function LandingPage({ subscription }) {
               .replace(/ /g, "-")
               .replace(/[^\w-]+/g, "")
 
-
             return (
               <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">
                 <a href={`#${anchor}`}>{children}</a>
@@ -227,13 +221,56 @@ export default function LandingPage({ subscription }) {
         ]}
       />
 
-
-
-      <div className="bg-white pad-50 row">
+      {/* <div className="bg-white pad-50 row">
         <div className="col-md-10 mx-auto">
-          <p className="line-height-1_8">
-            {landings[0]?.content?.blocks[1].content[1]?.message}
-          </p>
+          <p className="line-height-1_8">{landings[0]?.content?.blocks[1].content[1]?.message}</p>
+        </div>
+      </div> */}
+
+      <div id="social-links-shell">
+        <div id="social-links" className="flex-row">
+          <a href="#">
+            <Image src="/images/social-fb.png" width={100} height={100} alt="Facebook" />
+          </a>
+
+          <a href="#">
+            <Image src="/images/social-insta.png" width={100} height={100} alt="Instagram" />
+          </a>
+
+          <a href="#">
+            <Image src="/images/social-linkedin.png" width={100} height={100} alt="LinkedIn" />
+          </a>
+
+          <a href="#">
+            <Image src="/images/social-youtube.png" width={100} height={100} alt="YouTube" />
+          </a>
+        </div>
+        <div id="social-text">Connect with us online</div>
+        <div className="social-bg bg-1"></div>
+        <div className="social-bg bg-2"></div>
+      </div>
+
+      <div id="town-people">
+        <div id="town-people-message">
+          <h2>
+            Blue Skies does not discriminate in any way for the aid we give, not on the basis of religion, age, sex,
+            native language, gender, income, immigration status, disability, race, or any other protected status.
+          </h2>
+        </div>
+
+        <div id="people-helping">
+          <Image src="/images/people-helping.png" width={1125} height={425} alt="People helping others" />
+        </div>
+        <div id="candid-box" className="flex-row">
+          <div id="candid-box-img">
+            <Image src="/images/candid.png" width={300} height={300} alt="Candid Platinum Transparency 2023" />
+          </div>
+
+          <div id="candid-box-msg">
+            <h3>We’ve just earned our 2023 Platinum Seal with Candid.org</h3>
+            <p>We are excited to share the work our nonprofit does through our profile.</p>
+            <a href="#">Learn how you can support us and make a difference.</a>
+          </div>
         </div>
       </div>
 
